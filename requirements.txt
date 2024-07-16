@@ -1,1 +1,1 @@
-coloredlog
+coloredlogs
