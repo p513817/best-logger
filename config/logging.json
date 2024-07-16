@@ -1,0 +1,40 @@
+{
+    "version": 1,
+    "disable_existing_loggers": false,
+    "formatters": {
+        "fmt_colored": {
+            "()": "coloredlogs.ColoredFormatter",
+            "format": "%(asctime)s %(levelname)-.4s - %(message)s (%(name)s)",
+            "datefmt": "%H:%M:%S"
+        },
+        "fmt_file": {
+            "format": "%(asctime)s :: %(levelname)s :: %(funcName)s in %(filename)s:%(lineno)d :: %(message)s",
+            "datefmt": "%Y-%m-%d %H:%M:%S"
+        }
+    },
+    "handlers": {
+        "console": {
+            "level": "INFO",
+            "class": "logging.StreamHandler",
+            "formatter": "fmt_colored",
+            "stream": "ext://sys.stdout"
+        },
+        "file": {
+            "level": "DEBUG",
+            "class": "logging.handlers.RotatingFileHandler",
+            "formatter": "fmt_file",
+            "filename": "logs/best-logger.log",
+            "maxBytes": 500000,
+            "backupCount": 5
+        }
+    },
+    "loggers": {
+        "": {
+            "level": "DEBUG",
+            "handlers": [
+                "console",
+                "file"
+            ]
+        }
+    }
+}
